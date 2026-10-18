@@ -1,27 +1,36 @@
-<!---[![License: MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/justcallmekoko/ESP32Marauder/blob/master/LICENSE)--->
-<!---[![Gitter](https://badges.gitter.im/justcallmekoko/ESP32Marauder.png)](https://gitter.im/justcallmekoko/ESP32Marauder)--->
-<!---[![Build Status](https://travis-ci.com/justcallmekoko/ESP32Marauder.svg?branch=master)](https://travis-ci.com/justcallmekoko/ESP32Marauder)--->
-<!---Shields/Badges https://shields.io/--->
+# ESP32 Marauder — Waveshare ESP32-C5 3.5-inch package
 
-# ESP32 Marauder
-<p align="center"><img alt="Marauder logo" src="https://github.com/justcallmekoko/ESP32Marauder/blob/master/pictures/marauder_skull_patch_04_full_final.png?raw=true" width="300"></p>
-<p align="center">
-  <b>A suite of WiFi/Bluetooth offensive and defensive tools for the ESP32</b>
-  <br><br>
-  <a href="https://github.com/justcallmekoko/ESP32Marauder/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
-  <a href="https://gitter.im/justcallmekoko/ESP32Marauder"><img alt="Gitter" src="https://badges.gitter.im/justcallmekoko/ESP32Marauder.png"/></a>
-  <br>
-  <a href="https://twitter.com/intent/follow?screen_name=jcmkyoutube"><img src="https://img.shields.io/twitter/follow/jcmkyoutube?style=social&logo=twitter" alt="Twitter"></a>
-  <a href="https://www.instagram.com/just.call.me.koko"><img src="https://img.shields.io/badge/Follow%20Me-Instagram-orange" alt="Instagram"/></a>
-  <br><br>
-</p>
-    
-[![Build and Push](https://github.com/justcallmekoko/ESP32Marauder/actions/workflows/build_push.yml/badge.svg)](https://github.com/justcallmekoko/ESP32Marauder/actions/workflows/build_push.yml)
+This fork publishes p-keminer's complete Waveshare package on its default branch, `master`.
 
-## Getting Started
-Download the [latest release](https://github.com/justcallmekoko/ESP32Marauder/releases/latest) of the firmware.  
+Supported hardware: **Waveshare ESP32-C5-WIFI6-KIT-N32R8-UM** with the **Waveshare 3.5inch Capacitive Touch LCD (ST7796S + FT6336U)**.
 
-Check out the project [wiki](https://github.com/justcallmekoko/ESP32Marauder/wiki) for a full overview of the ESP32 Marauder
+Start with the [Waveshare package README](contrib/waveshare-esp32-c5-35/README.md).
 
-# For Sale Now
-You can buy the ESP32 Marauder using [this link](https://www.justcallmekokollc.com)
+## Complete package
+
+| What you need | Where to find it |
+| --- | --- |
+| Application and complete 8 MiB flash images, partitions, build manifest, and checksums | [Firmware](contrib/waveshare-esp32-c5-35/firmware/) |
+| First installation and OTA-safe USB updates | [Flashing instructions](contrib/waveshare-esp32-c5-35/docs/FLASH.md) |
+| Complete source snapshot and pinned dependencies | [Source snapshot](contrib/waveshare-esp32-c5-35/source/SNAPSHOT.md) |
+| Reproducible build and helper scripts | [Build instructions](contrib/waveshare-esp32-c5-35/docs/BUILD.md) · [Tools](contrib/waveshare-esp32-c5-35/tools/) |
+| Display setup and optional Arduino board profile | [Board profile](contrib/waveshare-esp32-c5-35/profile/) |
+| Pin-by-pin wiring | [Wiring diagram](contrib/waveshare-esp32-c5-35/wiring/waveshare-c5-35inch-wiring.png) |
+| Printable enclosure, fit-test parts, and parts list | [Enclosure](contrib/waveshare-esp32-c5-35/enclosure/README.md) · [Parts](contrib/waveshare-esp32-c5-35/enclosure/PARTS.md) |
+| Recorded tests, known limitations, and provenance | [Validation](contrib/waveshare-esp32-c5-35/docs/VALIDATION.md) · [Limitations](contrib/waveshare-esp32-c5-35/docs/KNOWN_LIMITATIONS.md) · [Provenance](contrib/waveshare-esp32-c5-35/docs/PROVENANCE.md) |
+
+Read the flashing instructions before writing an image: the merged image erases the complete internal flash.
+
+## Source and validation
+
+The complete Waveshare firmware source is supplied as a snapshot patch against the pinned upstream base recorded in [`source/SNAPSHOT.md`](contrib/waveshare-esp32-c5-35/source/SNAPSHOT.md). Follow the package's [build instructions](contrib/waveshare-esp32-c5-35/docs/BUILD.md) to reconstruct and build that source in a disposable worktree.
+
+The root `esp32_marauder/` directory remains the fork's existing upstream baseline; it is **not** the reconstructed Waveshare snapshot. Publishing the package on `master` does not rebase its firmware onto the latest upstream release.
+
+All 38 package files are preserved unchanged from the [package commit](https://github.com/p-keminer/ESP32Marauder/commit/409f6b4e823734db142d7a935286030d300d2dfd). The published path-sanitized binary was not separately hardware-flashed; the preceding build completed the documented hardware run. The published snapshot also contains the documented serial-password redaction. See the validation notes for the exact evidence and limits.
+
+## Upstream project
+
+Based on [ESP32 Marauder by justcallmekoko](https://github.com/justcallmekoko/ESP32Marauder). The [original upstream README](README.upstream.md) and [license](LICENSE) are preserved.
+
+Use the firmware and wireless features only on systems and networks you own or are explicitly authorized to test.
